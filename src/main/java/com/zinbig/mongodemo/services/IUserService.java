@@ -4,6 +4,7 @@
 package com.zinbig.mongodemo.services;
 
 import com.zinbig.mongodemo.dtos.UserDTO;
+import com.zinbig.mongodemo.model.User;
 
 /**
  * Esta interface define el comportamiento esperado por los servicios
@@ -31,5 +32,7 @@ public interface IUserService {
 	 * @param aNumber es el número del teléfono.
 	 */
 	public void addPhone(String anId, String aNumber);
+
+	public User findUserX(String anUsername, String aName);
 
 }

@@ -88,4 +88,8 @@ public class UserServiceImpl implements IUserService {
 		this.getUserRepository().save(anUser);
 
 	}
+
+	public User findUserX(String anUsername, String aName) {
+		return this.getUserRepository().findUserX(anUsername, aName);
+	}
 }
