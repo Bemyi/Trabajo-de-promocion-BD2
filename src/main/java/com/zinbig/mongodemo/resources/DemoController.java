@@ -85,9 +85,9 @@ public class DemoController {
 		return "hole";
 	}
 
-	@GetMapping("/accidents/{start}/{end}")
+	@GetMapping("/accidents/primer/{start}/{end}")
 	public List<Accident> findByCity(@PathVariable("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date start, @PathVariable("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date end) {
-		return this.getAccidentsService().findByCity(start, end);
+		return this.getAccidentsService().findByStart_TimeBetween(start, end);
 	}
 
 }

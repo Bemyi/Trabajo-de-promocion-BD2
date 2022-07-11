@@ -33,6 +33,6 @@ public interface AccidentRepository extends MongoRepository<Accident, String> {
 	public Accident findAccidentBySource(String aSource);
 
 	@Query("{startDate: ?1, endDate:?0}")
-	public List<Accident> findByDateBetween(Date startDate, Date endDate);
+	public List<Accident> findByStart_TimeBetween(Date startDate, Date endDate);
 
 }

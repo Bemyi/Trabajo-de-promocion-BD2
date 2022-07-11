@@ -6,6 +6,8 @@ package com.zinbig.mongodemo.dtos;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.Date;
+
 /**
  * Las instancias de esta clase se utilizan para transferir información de los
  * usuarios.
@@ -21,8 +23,8 @@ public class AccidentDTO {
 	private String id;
 
 	private String Source;
-	private String Start_Time;
-	private String End_Time;
+	private Date Start_Time;
+	private Date End_Time;
 	private String End_Lat;
 	private String End_Lng;
 	private String Side;
@@ -69,7 +71,7 @@ public class AccidentDTO {
 	private Boolean Traffic_Signal;
 	private Boolean Turning_Loop;
 
-	public AccidentDTO(String id, String source, String start_Time, String end_Time, String end_Lat, String end_Lng, String side, String city, String county, String state, String zipcode, String country, String timezone, String airport_Code, String weather_Timestamp, String wind_Direction, String weather_Condition, String sunrise_Sunset, String civil_Twilight, String nautical_Twilight, String astronomical_Twilight, String description, String street, Integer severity, Float TMC, Float start_Lat, Float start_Lng, Float distance, Float number, Float temperature, Float wind_Chill, Float humidity, Float pressure, Float visibility, Float wind_Speed, Float precipitation, Boolean amenity, Boolean bump, Boolean crossing, Boolean give_Way, Boolean junction, Boolean no_Exit, Boolean railway, Boolean roundabout, Boolean station, Boolean stop, Boolean traffic_Calming, Boolean traffic_Signal, Boolean turning_Loop) {
+	public AccidentDTO(String id, String source, Date start_Time, Date end_Time, String end_Lat, String end_Lng, String side, String city, String county, String state, String zipcode, String country, String timezone, String airport_Code, String weather_Timestamp, String wind_Direction, String weather_Condition, String sunrise_Sunset, String civil_Twilight, String nautical_Twilight, String astronomical_Twilight, String description, String street, Integer severity, Float TMC, Float start_Lat, Float start_Lng, Float distance, Float number, Float temperature, Float wind_Chill, Float humidity, Float pressure, Float visibility, Float wind_Speed, Float precipitation, Boolean amenity, Boolean bump, Boolean crossing, Boolean give_Way, Boolean junction, Boolean no_Exit, Boolean railway, Boolean roundabout, Boolean station, Boolean stop, Boolean traffic_Calming, Boolean traffic_Signal, Boolean turning_Loop) {
 		this.id = id;
 		Source = source;
 		Start_Time = start_Time;
@@ -121,6 +123,9 @@ public class AccidentDTO {
 		Turning_Loop = turning_Loop;
 	}
 
+	public AccidentDTO(String id, String source, String start_time, String end_time, String end_lat, String end_lng, String side, String city, String county, String state, String zipcode, String country, String timezone, String airport_code, String weather_timestamp, String wind_direction, String weather_condition, String sunrise_sunset, String civil_twilight, String nautical_twilight, String astronomical_twilight, String description, String street, Integer severity, Float tmc, Float start_lat, Float start_lng, Float distance, Float number, Float temperature, Float wind_chill, Float humidity, Float pressure, Float visibility, Float wind_speed, Float precipitation, Boolean amenity, Boolean bump, Boolean crossing, Boolean give_way, Boolean junction, Boolean no_exit, Boolean railway, Boolean roundabout, Boolean station, Boolean stop, Boolean traffic_calming, Boolean traffic_signal, Boolean turning_loop) {
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -129,11 +134,11 @@ public class AccidentDTO {
 		return Source;
 	}
 
-	public String getStart_Time() {
+	public Date getStart_Time() {
 		return Start_Time;
 	}
 
-	public String getEnd_Time() {
+	public Date getEnd_Time() {
 		return End_Time;
 	}
 
@@ -325,11 +330,11 @@ public class AccidentDTO {
 		Source = source;
 	}
 
-	public void setStart_Time(String start_Time) {
+	public void setStart_Time(Date start_Time) {
 		Start_Time = start_Time;
 	}
 
-	public void setEnd_Time(String end_Time) {
+	public void setEnd_Time(Date end_Time) {
 		End_Time = end_Time;
 	}
 

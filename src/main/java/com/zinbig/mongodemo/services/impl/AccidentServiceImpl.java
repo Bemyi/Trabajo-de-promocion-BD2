@@ -45,7 +45,7 @@ public class AccidentServiceImpl implements IAccidentService {
 	}
 
 	@Override
-	public List<Accident> findByCity(Date start, Date end) {
-		return this.accidentRepository.findByDateBetween(start, end);
+	public List<Accident> findByStart_TimeBetween(Date start, Date end) {
+		return this.accidentRepository.findByStart_TimeBetween(start, end);
 	}
 }

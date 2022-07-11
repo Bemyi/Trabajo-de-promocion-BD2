@@ -20,6 +20,6 @@ public interface IAccidentService {
 
 	public Accident findBySource(String anId);
 
-	public List<Accident> findByCity(Date start, Date end);
+	public List<Accident> findByStart_TimeBetween(Date start, Date end);
 
 }
