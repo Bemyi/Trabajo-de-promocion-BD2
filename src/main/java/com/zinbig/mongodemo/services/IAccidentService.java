@@ -5,6 +5,7 @@ package com.zinbig.mongodemo.services;
 
 import com.zinbig.mongodemo.model.Accident;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,8 +18,8 @@ import java.util.Optional;
  */
 public interface IAccidentService {
 
-	public Accident findById(String anId);
+	public Accident findBySource(String anId);
 
-	public List<Accident> findByCity(String aCity);
+	public List<Accident> findByCity(Date start, Date end);
 
 }

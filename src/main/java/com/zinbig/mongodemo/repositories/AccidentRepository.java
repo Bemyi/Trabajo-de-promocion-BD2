@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,10 +29,10 @@ public interface AccidentRepository extends MongoRepository<Accident, String> {
 	 * @param aName      es el nombre del usuario.
 	 * @return el usuario hallado o null.
 	 */
-	@Query("{ID: ?1}")
-	public Accident findAccidentByID(String anID);
+	@Query("{Source: ?0}")
+	public Accident findAccidentBySource(String aSource);
 
-	@Query("{city: ?0}")
-	public List<Accident> findCityX(String aCity);
+	@Query("{startDate: ?1, endDate:?0}")
+	public List<Accident> findByDateBetween(Date startDate, Date endDate);
 
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,12 +40,12 @@ public class AccidentServiceImpl implements IAccidentService {
 
 
 	@Override
-	public Accident findById(String anId) {
-		return this.accidentRepository.findAccidentByID(anId);
+	public Accident findBySource(String anId) {
+		return this.accidentRepository.findAccidentBySource(anId);
 	}
 
 	@Override
-	public List<Accident> findByCity(String aCity) {
-		return this.accidentRepository.findCityX(aCity);
+	public List<Accident> findByCity(Date start, Date end) {
+		return this.accidentRepository.findByDateBetween(start, end);
 	}
 }

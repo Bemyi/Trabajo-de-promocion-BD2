@@ -8,11 +8,13 @@ import javax.inject.Inject;
 import com.zinbig.mongodemo.model.Accident;
 import com.zinbig.mongodemo.model.User;
 import com.zinbig.mongodemo.services.IAccidentService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import com.zinbig.mongodemo.dtos.UserRequestDTO;
 import com.zinbig.mongodemo.services.IUserService;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,9 +70,9 @@ public class DemoController {
 		return this.accidentsService;
 	}
 
-	@GetMapping("/api/accidents/{id}")
-	public Accident findById(@PathVariable("id") String anId) {
-		return this.getAccidentsService().findById(anId);
+	@GetMapping("/accidents")
+	public Accident findById() {
+		return this.getAccidentsService().findBySource("anana");
 	}
 
 	@GetMapping("/api/users/{anUsername}/{aName}")
@@ -83,9 +85,9 @@ public class DemoController {
 		return "hole";
 	}
 
-	@GetMapping("/api/accidents/city/{city}")
-	public List<Accident> findByCity(@PathVariable("city") String aCity) {
-		return this.getAccidentsService().findByCity(aCity);
+	@GetMapping("/accidents/{start}/{end}")
+	public List<Accident> findByCity(@PathVariable("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date start, @PathVariable("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date end) {
+		return this.getAccidentsService().findByCity(start, end);
 	}
 
 }
