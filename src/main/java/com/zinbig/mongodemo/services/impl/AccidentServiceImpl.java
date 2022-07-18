@@ -5,6 +5,7 @@ package com.zinbig.mongodemo.services.impl;
 
 import com.zinbig.mongodemo.dtos.DTOFactory;
 import com.zinbig.mongodemo.model.Accident;
+import com.zinbig.mongodemo.model.WeatherCount;
 import com.zinbig.mongodemo.repositories.AccidentRepository;
 import com.zinbig.mongodemo.services.IAccidentService;
 import org.springframework.stereotype.Service;
@@ -52,5 +53,10 @@ public class AccidentServiceImpl implements IAccidentService {
 	@Override
 	public Accident findAccidentByStart_Time(Date start){
 		return this.accidentRepository.findAccidentByStart_Time(start);
+	}
+
+	@Override
+	public List<WeatherCount> getCommon(){
+		return this.accidentRepository.getCommon();
 	}
 }

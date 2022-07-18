@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import com.zinbig.mongodemo.model.Accident;
 import com.zinbig.mongodemo.model.User;
+import com.zinbig.mongodemo.model.WeatherCount;
 import com.zinbig.mongodemo.services.IAccidentService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -88,6 +89,11 @@ public class DemoController {
 	@GetMapping("/accidents/primera/")
 	public List<Accident> findByStart_TimeBetween(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date start, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date end) {
 		return this.getAccidentsService().findByStart_TimeBetween(start, end);
+	}
+
+	@GetMapping("/accidents/segunda/")
+	public List<WeatherCount> getCommon() {
+		return this.getAccidentsService().getCommon();
 	}
 
 	@GetMapping("/accidents/primer/")

@@ -3,7 +3,13 @@
  */
 package com.zinbig.mongodemo.repositories.impl;
 
-import com.zinbig.mongodemo.repositories.CustomUserRepository;
+import com.zinbig.mongodemo.model.Accident;
+import com.zinbig.mongodemo.model.WeatherCount;
+import com.zinbig.mongodemo.repositories.CustomAccidentRepository;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.*;
+import java.util.List;
 
 /**
  * Esta clase implementa los mecanismos personalizados de recuperación de
@@ -12,9 +18,9 @@ import com.zinbig.mongodemo.repositories.CustomUserRepository;
  * @author Javier Bazzocco
  *
  */
-public class AccidentRepositoryImpl implements CustomUserRepository {
+public class AccidentRepositoryImpl implements CustomAccidentRepository {
 
-	// private MongoTemplate mongoTemplate;
+	private MongoTemplate mongoTemplate;
 
 	/**
 	 * Obtiene la cantidad de usuarios que tienen la misma clave.
@@ -22,37 +28,15 @@ public class AccidentRepositoryImpl implements CustomUserRepository {
 	 * @return el número de usuarios.
 	 */
 	@Override
-	public int getNumberOfUsersThatHasTheSamePassword() {
+	public List<WeatherCount> getCommon() {
+		GroupOperation groupBy = Aggregation.group("Weather_Condition").count().as("count");
+		//MatchOperation filter = Aggregation.match(new Criteria("count").gt(10000000));
+		SortOperation sortOperation = Aggregation.sort(Sort.by(Sort.Direction.DESC, "count"));
 
-		return 4;
-
-//		Update update = new Update();
-//		update.set("rLiqFilterClassName", aFilterClassName);
-//		update.set("employees", someEmployees);
-//		update.set("dateFrom", aDateFrom);
-//		update.set("dateTo", aDateTo);
-//		update.set("status", aStatus);
-//		mongoTemplate.updateFirst(Query.query(Criteria.where("rLiqFilterClassName").is(oldFilterClassName)), update,
-//				FilterConfiguration.class);
-/////////////////////////////////////////////////////////////////////
-//		Collection<String> result = new ArrayList<String>();
-//		DistinctIterable<String> distinctIterable = mongoTemplate.getCollection("receipt").distinct("ulic",
-//				String.class);
-//		MongoCursor<String> cursor = distinctIterable.iterator();
-//		while (cursor.hasNext()) {
-//			result.add(cursor.next().toString());
-//		}
-//
-//		return result.size();
-//////////////////////////////////////////////////////////////////////
-//		GroupOperation sum = Aggregation.group("period").count().as("count");
-//		SortOperation sortByCount = Aggregation.sort(Direction.ASC, "period");
-//
-//		Aggregation aggregation = Aggregation.newAggregation(sum, sortByCount);
-//
-//		AggregationResults<ResultCount> result = mongoTemplate.aggregate(aggregation, "liquidation",
-//				ResultCount.class);
-//		return result.getMappedResults();
+		Aggregation aggregation = Aggregation.newAggregation(
+				groupBy, sortOperation);
+		AggregationResults<WeatherCount> result = mongoTemplate.aggregate(aggregation, "accident", WeatherCount.class);
+		return result.getMappedResults();
 	}
 
 }

@@ -4,6 +4,7 @@
 package com.zinbig.mongodemo.services;
 
 import com.zinbig.mongodemo.model.Accident;
+import com.zinbig.mongodemo.model.WeatherCount;
 
 import java.util.Date;
 import java.util.List;
@@ -23,4 +24,6 @@ public interface IAccidentService {
 	public List<Accident> findByStart_TimeBetween(Date start, Date end);
 
 	public Accident findAccidentByStart_Time(Date start);
+
+	public List<WeatherCount> getCommon();
 }

@@ -20,7 +20,7 @@ import java.util.Optional;
  *
  */
 @Repository
-public interface AccidentRepository extends MongoRepository<Accident, String> {
+public interface AccidentRepository extends MongoRepository<Accident, String>, CustomAccidentRepository {
 
 	@Query("{Source: ?0}")
 	public Accident findAccidentBySource(String aSource);
