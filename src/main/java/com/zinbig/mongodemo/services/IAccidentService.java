@@ -22,4 +22,5 @@ public interface IAccidentService {
 
 	public List<Accident> findByStart_TimeBetween(Date start, Date end);
 
+	public Accident findAccidentByStart_Time(Date start);
 }

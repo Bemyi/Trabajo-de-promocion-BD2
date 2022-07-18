@@ -5,6 +5,8 @@ package com.zinbig.mongodemo.model;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.Date;
+
 /**
  * Clase que representa a la entidad del usuario.<br>
  * 
@@ -21,8 +23,8 @@ public class Accident {
 	private String id;
 
 	private String Source;
-	private String Start_Time;
-	private String End_Time;
+	private Date Start_Time;
+	private Date End_Time;
 	private String End_Lat;
 	private String End_Lng;
 	private String Side;
@@ -73,7 +75,7 @@ public class Accident {
 
 	}
 
-	public Accident(String id, String source, String start_Time, String end_Time, String end_Lat, String end_Lng, String side, String city, String county, String state, String zipcode, String country, String timezone, String airport_Code, String weather_Timestamp, String wind_Direction, String weather_Condition, String sunrise_Sunset, String civil_Twilight, String nautical_Twilight, String astronomical_Twilight, String description, String street, Integer severity, Float TMC, Float start_Lat, Float start_Lng, Float distance, Float number, Float temperature, Float wind_Chill, Float humidity, Float pressure, Float visibility, Float wind_Speed, Float precipitation, Boolean amenity, Boolean bump, Boolean crossing, Boolean give_Way, Boolean junction, Boolean no_Exit, Boolean railway, Boolean roundabout, Boolean station, Boolean stop, Boolean traffic_Calming, Boolean traffic_Signal, Boolean turning_Loop) {
+	public Accident(String id, String source, Date start_Time, Date end_Time, String end_Lat, String end_Lng, String side, String city, String county, String state, String zipcode, String country, String timezone, String airport_Code, String weather_Timestamp, String wind_Direction, String weather_Condition, String sunrise_Sunset, String civil_Twilight, String nautical_Twilight, String astronomical_Twilight, String description, String street, Integer severity, Float TMC, Float start_Lat, Float start_Lng, Float distance, Float number, Float temperature, Float wind_Chill, Float humidity, Float pressure, Float visibility, Float wind_Speed, Float precipitation, Boolean amenity, Boolean bump, Boolean crossing, Boolean give_Way, Boolean junction, Boolean no_Exit, Boolean railway, Boolean roundabout, Boolean station, Boolean stop, Boolean traffic_Calming, Boolean traffic_Signal, Boolean turning_Loop) {
 		this.id = id;
 		Source = source;
 		Start_Time = start_Time;
@@ -133,11 +135,11 @@ public class Accident {
 		return Source;
 	}
 
-	public String getStart_Time() {
+	public Date getStart_Time() {
 		return Start_Time;
 	}
 
-	public String getEnd_Time() {
+	public Date getEnd_Time() {
 		return End_Time;
 	}
 
@@ -329,11 +331,11 @@ public class Accident {
 		Source = source;
 	}
 
-	public void setStart_Time(String start_Time) {
+	public void setStart_Time(Date start_Time) {
 		Start_Time = start_Time;
 	}
 
-	public void setEnd_Time(String end_Time) {
+	public void setEnd_Time(Date end_Time) {
 		End_Time = end_Time;
 	}
 

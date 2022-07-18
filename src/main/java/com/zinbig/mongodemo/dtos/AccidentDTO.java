@@ -123,9 +123,6 @@ public class AccidentDTO {
 		Turning_Loop = turning_Loop;
 	}
 
-	public AccidentDTO(String id, String source, String start_time, String end_time, String end_lat, String end_lng, String side, String city, String county, String state, String zipcode, String country, String timezone, String airport_code, String weather_timestamp, String wind_direction, String weather_condition, String sunrise_sunset, String civil_twilight, String nautical_twilight, String astronomical_twilight, String description, String street, Integer severity, Float tmc, Float start_lat, Float start_lng, Float distance, Float number, Float temperature, Float wind_chill, Float humidity, Float pressure, Float visibility, Float wind_speed, Float precipitation, Boolean amenity, Boolean bump, Boolean crossing, Boolean give_way, Boolean junction, Boolean no_exit, Boolean railway, Boolean roundabout, Boolean station, Boolean stop, Boolean traffic_calming, Boolean traffic_signal, Boolean turning_loop) {
-	}
-
 	public String getId() {
 		return id;
 	}

@@ -71,8 +71,8 @@ public class DemoController {
 	}
 
 	@GetMapping("/accidents")
-	public Accident findById() {
-		return this.getAccidentsService().findBySource("anana");
+	public Date findById() {
+		return this.getAccidentsService().findBySource("anana").getStart_Time();
 	}
 
 	@GetMapping("/api/users/{anUsername}/{aName}")
@@ -85,9 +85,14 @@ public class DemoController {
 		return "hole";
 	}
 
-	@GetMapping("/accidents/primer/{start}/{end}")
-	public List<Accident> findByCity(@PathVariable("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date start, @PathVariable("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date end) {
+	@GetMapping("/accidents/primera/")
+	public List<Accident> findByStart_TimeBetween(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date start, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date end) {
 		return this.getAccidentsService().findByStart_TimeBetween(start, end);
+	}
+
+	@GetMapping("/accidents/primer/")
+	public Accident findByStart_TimeBetweenn(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date start, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date end) {
+		return this.getAccidentsService().findAccidentByStart_Time(start);
 	}
 
 }

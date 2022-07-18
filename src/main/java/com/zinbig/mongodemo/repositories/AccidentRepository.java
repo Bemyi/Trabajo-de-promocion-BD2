@@ -22,17 +22,12 @@ import java.util.Optional;
 @Repository
 public interface AccidentRepository extends MongoRepository<Accident, String> {
 
-	/**
-	 * Recupera un usuario por su nombre y cuenta de usuario.
-	 * 
-	 * @param anUsername es la cuenta de usuario a buscar.
-	 * @param aName      es el nombre del usuario.
-	 * @return el usuario hallado o null.
-	 */
 	@Query("{Source: ?0}")
 	public Accident findAccidentBySource(String aSource);
 
-	@Query("{startDate: ?1, endDate:?0}")
-	public List<Accident> findByStart_TimeBetween(Date startDate, Date endDate);
+	@Query("{Start_Time: { $gte: ?0, $lte: ?1 }}")
+	public List<Accident> findByStart_TimeBetween(Date aStart, Date aEnd);
 
+	@Query("{Start_Time: ?0}")
+	public Accident findAccidentByStart_Time(Date aStart_Time);
 }
